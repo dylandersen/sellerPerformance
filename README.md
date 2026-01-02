@@ -10,6 +10,73 @@ Salesforce Lightning Web Component for analyzing seller performance metrics with
 - Salesforce CLI (SFDX) installed
 - Einstein Generative AI enabled in your org (for AI insights)
 
+## Project Structure
+
+```
+sellerPerformance/
+├── classes/                          # Apex classes
+│   ├── SellerPerformanceController.cls
+│   ├── SellerPerformanceController.cls-meta.xml
+│   ├── SellerPerformanceAnalysis.cls
+│   ├── SellerPerformanceAnalysis.cls-meta.xml
+│   ├── SellerPerformanceMetrics.cls
+│   └── SellerPerformanceMetrics.cls-meta.xml
+├── lwc/                              # Lightning Web Component
+│   ├── sellerPerformance.js          # Component logic and data handling
+│   ├── sellerPerformance.html        # Component markup/template
+│   ├── sellerPerformance.css         # Component styling
+│   └── sellerPerformance.js-meta.xml # Component metadata
+├── README.md                          # This file
+└── sellerPerformance.png              # Dashboard screenshot
+```
+
+### File Breakdown
+
+**Apex Classes (`classes/`):**
+- **SellerPerformanceController.cls** - Main controller class that:
+  - Queries sales data (Tasks, Events, Opportunities, Contacts)
+  - Calculates performance score (0-100)
+  - Calls Einstein AI for insights and recommendations
+  - Returns analysis results to the LWC component
+
+- **SellerPerformanceAnalysis.cls** - Wrapper class containing:
+  - Performance score and status
+  - Trend analysis (Accelerating/Steady/Declining)
+  - Key insights (List<String>)
+  - Recommended actions (List<String>)
+  - Metrics object reference
+
+- **SellerPerformanceMetrics.cls** - Data wrapper class containing:
+  - Activity metrics (calls, emails, meetings, tasks)
+  - Pipeline metrics (value, opportunities, deal velocity)
+  - Deal execution metrics (win rate, revenue, deal size)
+  - Relationship metrics (contacts engaged, new relationships)
+  - Pipeline health metrics (at-risk deals, stagnant deals)
+  - Tooltip data for detailed breakdowns
+
+**Lightning Web Component (`lwc/sellerPerformance/`):**
+- **sellerPerformance.js** - Component JavaScript:
+  - Calls Apex controller to fetch performance data
+  - Manages component state (loading, errors, data)
+  - Handles user interactions (refresh, expand/collapse sections)
+  - Formats and displays metrics
+
+- **sellerPerformance.html** - Component template:
+  - Defines the UI structure
+  - Displays performance score gauge
+  - Shows metrics cards and insights
+  - Renders recommended actions
+
+- **sellerPerformance.css** - Component styling:
+  - Custom styles for the dashboard
+  - Color coding for performance status
+  - Responsive layout styles
+
+- **sellerPerformance.js-meta.xml** - Component configuration:
+  - Defines component metadata
+  - Sets API version
+  - Configures component properties
+
 ## Setup Instructions
 
 ### 1. Clone the Repository
