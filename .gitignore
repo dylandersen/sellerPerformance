@@ -1,0 +1,31 @@
+# Salesforce specific ignores
+.sfdx/
+.sf/
+**/.sfdx/**
+**/.sf/**
+**/node_modules/**
+**/dist/**
+**/.localdevserver/**
+**/.vscode/**
+**/.idea/**
+**/*.log
+**/.DS_Store
+
+# Salesforce cache and temp files
+**/__pycache__/
+**/*.pyc
+**/.sfdx/tools/**
+**/.sfdx/alias.json
+
+# Package files
+**/package-lock.json
+**/yarn.lock
+
+# Environment files
+**/.env
+**/.env.local
+**/.env.*.local
+
+# OS files
+.DS_Store
+Thumbs.db
